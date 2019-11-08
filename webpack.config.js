@@ -2,7 +2,6 @@ const development = process.env.dev === "true" ? true : false;
 
 console.log(development);
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require("path");
 
 module.exports = {
@@ -23,7 +22,14 @@ module.exports = {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: [
+                /*'@babel/preset-env'*/
+                ["@babel/env", {
+                  "targets": {
+                    "node": "current"
+                  }
+                }]
+              ]
             }
           }
         },
@@ -41,9 +47,7 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.html']
     },
-    plugins: [
-      new HtmlWebpackPlugin()
-    ],
+    plugins: [],
     externals: [
 
     ]
