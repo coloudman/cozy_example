@@ -131,6 +131,88 @@ spaceController.addEventListener("click", event => {
     spaceController.setAttribute("value","Space : " + newSpace);
 });
 
+const blockLinkController = document.getElementById("blockLinkController");
+blockLinkController.addEventListener("click", () => {
+    const newMinusLinked = blockLinkController.dataset.linked === "true" ? false : true //이제, 2번째 연결점에 마이너스가 들어갈 것인가?!
+    code.unlink("second"); //하여튼 현재 상황에서는, 뭔가 연결 되어 있어.
+    if(newMinusLinked) {
+        code.link("second", {
+            iD:{
+                packageId:"MATH",
+                packageVersion:"1",
+                id:"Subtract"
+            },
+            linkingPointsData:{
+                first:{
+                    iD:{
+                        packageId:"MATH",
+                        packageVersion:"1",
+                        id:"Number"
+                    },
+                    data:{
+                        number:8
+                    },
+                    linkingPointsData:{},
+                    controllerDatas:{}
+                },
+                second:{
+                    iD:{
+                        packageId:"MATH",
+                        packageVersion:"1",
+                        id:"Number"
+                    },
+                    data:{
+                        number:22
+                    },
+                    linkingPointsData:{},
+                    controllerDatas:{}
+                }
+            },
+            data:{},
+            controllerDatas:{}
+        });
+    } else {
+        code.link("second", {
+            iD:{
+                packageId:"MATH",
+                packageVersion:"1",
+                id:"Add"
+            },
+            linkingPointsData:{
+                first:{
+                    iD:{
+                        packageId:"MATH",
+                        packageVersion:"1",
+                        id:"Number"
+                    },
+                    data:{
+                        number:90
+                    },
+                    linkingPointsData:{},
+                    controllerDatas:{}
+                },
+                second:{
+                    iD:{
+                        packageId:"MATH",
+                        packageVersion:"1",
+                        id:"Number"
+                    },
+                    data:{
+                        number:2
+                    },
+                    linkingPointsData:{},
+                    controllerDatas:{}
+                }
+            },
+            data:{},
+            controllerDatas:{}
+        });
+    }
+    blockLinkController.dataset.linked = newMinusLinked + "";
+    blockLinkController.setAttribute("value","Minus Block Linked : " + newMinusLinked);
+});
+
+
 document.getElementById("compile").addEventListener("click", () => {
     //컴파일
     console.log(area.getController("compiler")[0].compile());

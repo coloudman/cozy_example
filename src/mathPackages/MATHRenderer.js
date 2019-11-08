@@ -14,6 +14,9 @@ class Number extends Renderer{
         const input = document.createElement("input");
         input.type = "text";
         input.value = this.code.getNumber();
+        input.addEventListener("change", () => {
+            this.code.setNumber(parseInt(input.value));
+        });
         this.div.appendChild(input);
         return this.div;
     }
@@ -53,9 +56,9 @@ class Subtract extends RendererWithChildUtil {
         this.div.style.borderColor = "black";
         this.div.style.borderRadius = "7px";
         this.div.style.padding = "5px";
-        
+
         this.div.appendChild(this.addLinkElement("first"));
-        this.div.appendChild(document.createTextNode(" + "));
+        this.div.appendChild(document.createTextNode(" - "));
         this.div.appendChild(this.addLinkElement("second"));
         return this.div;
     }
