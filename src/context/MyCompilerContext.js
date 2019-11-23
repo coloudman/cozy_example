@@ -1,4 +1,4 @@
-const { Context } = require("cozy_lib");
+const { Context } = require("../../../COZY_LIB/dist/index");
 
 class MyCompilerContext extends Context {
     constructor(data) {

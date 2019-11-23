@@ -1,7 +1,11 @@
-const  { Code } = require("cozy_lib");
+const  { Code } = require("../../../../COZY_LIB/dist/index");
 
 class Number extends Code {
-    init() {
+    constructor() {
+        super(...arguments);
+        if(this.data.number === undefined) {
+            this.data.number = 0;
+        }
     }
     setNumber(number) {
         this.data.number = number;
@@ -13,7 +17,8 @@ class Number extends Code {
 
 
 class BinaryOperator extends Code {
-    init() {
+    constructor() {
+        super(...arguments);
         this.addDefaultLinkingPoints(["first","second"]);
     }
 }
@@ -29,15 +34,36 @@ class Divide extends BinaryOperator {}
 class Power extends BinaryOperator {}
 
 
+class OneVarFunction extends Code {
+    constructor() {
+        super(...arguments);
+        this.addDefaultLinkingPoints(["value"]);
+    }
+}
+
+class Sin extends OneVarFunction {
+}
+
+class Cos extends OneVarFunction {
+}
+
+class Tan extends OneVarFunction {
+}
+
 module.exports = {
     id:"MATH",
     version:"1",
     body: {
         Number,
+
         Add,
         Subtract,
         Multiply,
         Divide,
-        Power
+        Power,
+
+        Sin,
+        Cos,
+        Tan
     }
 }

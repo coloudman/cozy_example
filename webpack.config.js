@@ -28,24 +28,18 @@ module.exports = {
                   "targets": {
                     "node": "current"
                   }
-                }]
+                }],
+              ],
+              plugins:[
+                "@babel/plugin-proposal-class-properties"
               ]
-            }
-          }
-        },
-        {
-          test: /\.(html)$/,
-          use: {
-            loader: 'html-loader',
-            options: {
-              attrs: [':data-src']
             }
           }
         }
       ]
     },
     resolve: {
-      extensions: ['.js', '.html']
+      extensions: ['.js']
     },
     plugins: [],
     externals: [

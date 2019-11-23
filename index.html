@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>COZY EXAMPLE</title>
     <style>
-        #jam {
+        body {
+            margin:0;
+        }
+        #jam, #cozy {
             height:500px;
         }
     </style>
@@ -14,7 +17,16 @@
     <div id="jam"></div>
     <input type="button" id="spaceController" data-space="true" value="Space : true"/>
     <input type="button" id="blockLinkController" data-linked="true" value="Minus Block Linked : true"/>
+    <input type="button" id="moveBlock" value="Move block!"/>
     <input type="button" id="compile" value="Compile!"/>
+    <input type="button" id="dataPrint" value="Data print!"/>
+    <input type="button" id="linkingPointsWithPositionPrint" value="LinkingPoints print!"/>
+    <input type="button" id="stop" value="Stop!"/>
+    <!--여기까지는 COZY 핵심들의 테스트였고..-->
+    <hr>
+    <div id="cozy"></div>
+    <input type="button" id="compile_compose_js" value="Compile! - JS"/>
+    <input type="button" id="compile_compose_cpp" value="Compile! - Cpp"/>
     <script src="./dist/index.js"></script>
 </body>
 </html>

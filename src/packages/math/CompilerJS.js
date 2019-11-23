@@ -1,7 +1,6 @@
 
 
-const { Compiler } = require("cozycode");
-
+const { Compiler } = require("../../../../COZY/dist/index");
 
 class Number extends Compiler {
     init() {
@@ -49,8 +48,29 @@ class Power extends BinaryOperator {
     }
 }
 
+
+class OneVarFunction extends Compiler {
+
+}
+
+class Sin extends OneVarFunction {
+    compile() {
+        return `Math.sin(${this.getLinked("value").compile()})`
+    }
+}
+class Cos extends OneVarFunction {
+    compile() {
+        return `Math.cos(${this.getLinked("value").compile()})`
+    }
+}
+class Tan extends OneVarFunction {
+    compile() {
+        return `Math.tan(${this.getLinked("value").compile()})`
+    }
+}
+
 module.exports = {
-    id:"JS_MATH",
+    id:"MATH_JS",
     version:"1",
     for_id:"MATH",
     for_version:"1",
@@ -60,6 +80,9 @@ module.exports = {
         Subtract,
         Multiply,
         Divide,
-        Power
+        Power,
+        Sin,
+        Cos,
+        Tan
     }
 }
